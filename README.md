@@ -1,5 +1,5 @@
 # eco_placement
-Fejlesztői szkript tárgyak pontos elhelyezésére
+GTAV Fivem fejlesztői szkript tárgyak pontos elhelyezésére
 
 :pencil2: Tutya Discord elérhetősége (fejlesztő): HipnotikusAvasSzalonna#3252
 
