@@ -1,5 +1,5 @@
 # eco_placement
-GTAV Fivem fejlesztői szkript tárgyak pontos elhelyezésére
+GTAV Fivem standalone fejlesztői szkript tárgyak pontos elhelyezésére
 
 :pencil2: Tutya Discord elérhetősége (fejlesztő): HipnotikusAvasSzalonna#3252
 
@@ -17,3 +17,6 @@ Használat:
  - MOUSE SCROLL: forgatás
  - MOUSE SCROLL + SHIFT: forgatás gyorsan
  - MOUSE SCROLL DOWN: vágólapra másolás
+
+![eco_placement1](https://github.com/Ekhion76/eco_placement/blob/main/previews/eco_placement1.png)
+![eco_placement2](https://github.com/Ekhion76/eco_placement/blob/main/previews/eco_placement2.png)
