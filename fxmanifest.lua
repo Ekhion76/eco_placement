@@ -5,7 +5,10 @@ author 'Ekhion'
 description 'Economy - Place'
 version '1.0.0'
 
-client_script 'main.lua'
+client_scripts {
+    'config.lua',
+    'client.lua'
+}
 
 ui_page 'html/ui.html'
 
