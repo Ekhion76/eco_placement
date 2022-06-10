@@ -139,6 +139,11 @@ function objectCreate(model)
 
     forward = GetEntityForwardVector(_PlayerPedId) * Config.distance;
 
+    if not IsModelInCdimage(model) then
+
+        model = 'v_corp_bk_bust'
+    end
+
     if not HasModelLoaded(model) then
 
         RequestModel(model)
@@ -166,5 +171,3 @@ AddEventHandler('onResourceStop', function(resource)
         end
     end
 end)
-
-
