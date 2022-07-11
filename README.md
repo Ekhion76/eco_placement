@@ -2,7 +2,7 @@
 [STANDALONE] FiveM developer helper script for object place
 
 VIDEO:
-
+[![promo_video](https://img.youtube.com/vi/m5E3BEac4Gc/0.jpg)](https://youtu.be/m5E3BEac4Gc)
 
 Discord: https://discord.gg/4arG5sEpqw
 
