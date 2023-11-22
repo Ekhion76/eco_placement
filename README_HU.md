@@ -17,6 +17,7 @@ Funkciók:
 Használat:
  - /place parancs bekapcsolás/kikapcsolás
  - E: tárgy váltása
+ - X: tárgy pozició rögzitése átmenetileg (körbe lehet sétálni)
  - RIGHT CLICK: tárgy karakter elé helyezése
  - MOUSE SCROLL: forgatás
  - MOUSE SCROLL + SHIFT: forgatás gyorsan
