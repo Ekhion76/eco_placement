@@ -17,6 +17,7 @@ Functions:
 USE:
  - **/place** to start/stop
  - E: object switch
+ - X: lock object position temporarily (you can walk around)
  - RIGHT CLICK: place object to front of player
  - MOUSE SCROLL: rotation
  - MOUSE SCROLL + SHIFT: fast rotation
