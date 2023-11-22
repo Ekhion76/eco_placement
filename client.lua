@@ -1,44 +1,56 @@
-local active, _PlayerPedId, object, forward, heading, idx, model
+local active, _PlayerPedId, object, forward, heading, idx, model, offset
+local move = true
 
-CreateThread(function()
+function startControl()
 
-    _PlayerPedId = PlayerPedId()
+    CreateThread(function()
 
-    while true do
+        _PlayerPedId = PlayerPedId()
 
-        Citizen.Wait(0)
+        while active do
 
-        if active then
+            Wait(0)
 
             local userCoords = GetEntityCoords(_PlayerPedId)
 
-            SetEntityCoords(object, userCoords + forward)
+            if move then
+                SetEntityCoords(object, userCoords - offset)
+            end
             SetEntityHeading(object, heading)
             PlaceObjectOnGroundProperly(object)
-
 
             -- SHIFT
             if IsControlPressed(0, 61) then
 
                 -- SHIFT+SCROLL
-                if IsControlJustReleased(0, 16) then
+                if IsControlJustReleased(0, 14) then
 
                     heading = heading - 10.0
                 end
 
                 -- SHIFT+SCROLL
-                if IsControlJustReleased(0, 17) then
+                if IsControlJustReleased(0, 15) then
 
                     heading = heading + 10.0
                 end
             else
 
+                -- X toggle move
+                if IsControlJustReleased(0, 120) then
+
+                    move = not move
+                    offset = getOffset()
+                end
+
                 --RIGHT CLICK
                 if IsControlJustReleased(0, 25) then
 
                     _PlayerPedId = PlayerPedId()
-                    heading = GetEntityHeading(_PlayerPedId)
-                    forward = GetEntityForwardVector(_PlayerPedId) * 1.5;
+                    heading = GetEntityHeading(_PlayerPedId) - 180
+                    forward = GetEntityForwardVector(_PlayerPedId) * Config.distance;
+                    SetEntityCoords(object, userCoords + forward)
+                    SetEntityHeading(object, heading)
+                    offset = getOffset();
                 end
 
                 --E
@@ -56,13 +68,13 @@ CreateThread(function()
                 end
 
                 --SCROLL
-                if IsControlJustReleased(0, 16) then
+                if IsControlJustReleased(0, 14) then
 
                     heading = heading - 1.0
                 end
 
                 --SCROLL
-                if IsControlJustReleased(0, 17) then
+                if IsControlJustReleased(0, 15) then
 
                     heading = heading + 1.0
                 end
@@ -91,25 +103,25 @@ CreateThread(function()
 
                         SendNUIMessage({
                             subject = 'COPY',
-                            string = string.format('model = "%s", vector4(%s, %s, %s, %s)', model, x, y, z, h)
+                            --string = string.format('model = "%s", vector4(%s, %s, %s, %s)', model, x, y, z, h)
+                            string = string.format('vec(%s, %s, %s, %s),', x, y, z, h)
                         })
                     end
                 end
             end
-        else
-            Citizen.Wait(2000)
         end
-    end
-end)
+    end)
+end
 
 RegisterCommand('place', function()
 
-    active = not active
+    active = not active -- toggle
 
     if active then
 
         idx, model = next(Config.models);
         objectCreate(model)
+        startControl()
 
         SendNUIMessage({
             subject = 'OPEN'
@@ -133,7 +145,7 @@ function objectCreate(model)
     _PlayerPedId = PlayerPedId()
 
     local coords = GetEntityCoords(_PlayerPedId)
-    heading = GetEntityHeading(_PlayerPedId)
+    heading = GetEntityHeading(_PlayerPedId) - 180
 
     forward = GetEntityForwardVector(_PlayerPedId) * Config.distance;
 
@@ -155,6 +167,8 @@ function objectCreate(model)
     SetEntityHeading(object, heading + 180)
     PlaceObjectOnGroundProperly(object)
     SetEntityNoCollisionEntity(_PlayerPedId, object)
+    --SetEntityAlpha(object, 230, false)
+    offset = getOffset()
 end
 
 AddEventHandler('onResourceStop', function(resource)
@@ -170,4 +184,12 @@ end)
 
 function round(num, numDecimalPlaces)
     return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
+end
+
+function getOffset()
+    local playerPos = GetEntityCoords(_PlayerPedId)
+    local objectPos = GetEntityCoords(object)
+    local xDiff = playerPos.x - objectPos.x
+    local yDiff = playerPos.y - objectPos.y
+    return vec3(xDiff + 0.0, yDiff + 0.0, 0)
 end
