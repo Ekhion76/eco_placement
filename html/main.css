@@ -40,7 +40,7 @@ body {
 }
 
 ul {
-    margin:0;
+    margin: 0;
     padding: 0;
     list-style: none;
 }
@@ -52,4 +52,23 @@ li {
 
 li span {
     color: #9093ac;
+}
+
+.movement_enabled {
+    color: green;
+    font-weight: bold;
+}
+
+.movement_disabled {
+    color: crimson;
+    font-weight: bold;
+}
+
+.command_info {
+    color: orange;
+}
+
+#command {
+    color: white;
+    font-weight: bold;
 }

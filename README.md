@@ -13,6 +13,7 @@ Functions:
  - Player follow object movement
  - Fast and slow rotation for fine heading settings
  - Copy object position data to clipboard
+ - 'eco_placement:moveObject' -> trigger can be used to transfer the object to be moved from other scripts
  
 USE:
  - **/place** to start/stop
@@ -22,6 +23,8 @@ USE:
  - MOUSE SCROLL: rotation
  - MOUSE SCROLL + SHIFT: fast rotation
  - MOUSE SCROLL DOWN: copy position to clipboard
+
+From other scripts: TriggerEvent('eco_placement:moveObject', object)
 
 ![eco_placement1](https://github.com/Ekhion76/eco_placement/blob/main/previews/eco_placement1.png)
 ![eco_placement2](https://github.com/Ekhion76/eco_placement/blob/main/previews/eco_placement2.png)

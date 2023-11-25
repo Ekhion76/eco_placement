@@ -13,7 +13,8 @@ Funkciók:
  - Karakterkövető mozgatás
  - Forgatás
  - Tárgy koordinátinak másolása vágólapra
- 
+ - 'eco_placement:moveObject' -> triggerrel más szkriptkből is át lehet adni a mozgatni kívánt objektumot
+
 Használat:
  - /place parancs bekapcsolás/kikapcsolás
  - E: tárgy váltása
@@ -22,6 +23,8 @@ Használat:
  - MOUSE SCROLL: forgatás
  - MOUSE SCROLL + SHIFT: forgatás gyorsan
  - MOUSE SCROLL DOWN: vágólapra másolás
+
+Más szkriptekből: TriggerEvent('eco_placement:moveObject', object)
 
 ![eco_placement1](https://github.com/Ekhion76/eco_placement/blob/main/previews/eco_placement1.png)
 ![eco_placement2](https://github.com/Ekhion76/eco_placement/blob/main/previews/eco_placement2.png)
