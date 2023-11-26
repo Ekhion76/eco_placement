@@ -62,6 +62,7 @@ function PL:initPlace(obj)
             self:createObject()
         end
 
+        self:setMoveState(true)
         startControl()
         SendNUIMessage({
             subject = 'OPEN'
@@ -90,6 +91,7 @@ function PL:deleteObject()
     if self.deletableObject and DoesEntityExist(self.object) then
         DeleteObject(self.object)
     end
+    self.object = 0
 end
 
 function PL:createObject()
@@ -161,6 +163,8 @@ function PL:normalizeHeading()
 end
 
 function PL:loadNextObject()
+
+    if not self.deletableObject then return end
 
     self:deleteObject()
 

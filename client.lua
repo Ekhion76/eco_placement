@@ -66,10 +66,10 @@ RegisterCommand(Config.on_off_command, function()
 end)
 
 AddEventHandler('eco_placement:moveObject', function(obj)
-    if DoesEntityExist(obj) then
+
+    if PL.object ~= obj and DoesEntityExist(obj) then
         PL.active = false
-        PL:setMoveState(true)
-        Wait(200)
+        Wait(500)
         PL:initPlace(obj)
     end
 end)
